@@ -1,0 +1,26 @@
+.wrapper {
+    background-image: url("bg.jpg");
+    position: relative;
+    background-size: auto;
+  }
+  
+  #no {
+    position: absolute;
+    display: inline-block;
+    left: 35%;
+    top: 50vh;
+    -webkit-transition: all 0.1s ease-out;
+    padding: 20px;
+  }
+  #yes {
+    position: absolute;
+    display: inline-block;
+    left: 60%;
+    top: 50vh;
+    -webkit-transition: all 0.3s ease-out;
+    padding: 20px;
+  }
+  
+  .hide {
+    display: none;
+  }
