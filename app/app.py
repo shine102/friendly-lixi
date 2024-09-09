@@ -1,7 +1,9 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request # type: ignore
 import utils.get_bank_id as get_bank_id
-import pymysql
+import os
+import pymysql # type: ignore
 app = Flask(__name__)
+db_password = os.getenv("MYSQL_ROOT_PASSWORD")
 
 @app.route("/")
 def hello_world():
@@ -17,9 +19,10 @@ def info():
     if bank_id is None:
         return "Bank not found"
     # Connect to the database
-    connection = pymysql.connect(host='localhost',
+    connection = pymysql.connect(host='mysql-db',
+                                 port=3306,
                                 user='root',
-                                password='',
+                                password=db_password,
                                 db='lixi',
                                 charset='utf8mb4',
                                 cursorclass=pymysql.cursors.DictCursor)
@@ -34,3 +37,6 @@ def info():
     finally:
         connection.close()
     return "Success"
+
+if __name__ == "__main__":
+    app.run(debug=True)

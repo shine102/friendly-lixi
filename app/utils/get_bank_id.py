@@ -1,4 +1,4 @@
-import requests
+import requests # type: ignore
 import json
 
 def get_all_bank_id():
